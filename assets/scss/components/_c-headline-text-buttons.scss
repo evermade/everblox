@@ -1,0 +1,38 @@
+.c-headline-text-buttons {
+    position: relative;
+
+    &__headline {
+        margin-bottom: 20px;
+
+        @include for-tablet-portrait-up {
+            margin-bottom: 35px;
+        }
+    }
+
+    &__text {
+        max-width: 500px;
+    }
+
+    &__buttons {
+        margin-top: 35px;
+        display: flex;
+        flex-flow: row wrap;
+
+        @include for-tablet-portrait-up {
+            margin-top: 45px;
+        }
+    }
+
+    &__button {
+        margin-right: 10px;
+        margin-bottom: 10px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:only-child {
+            margin-bottom: 0;
+        }
+    }
+}

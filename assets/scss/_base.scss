@@ -1,0 +1,96 @@
+/**
+ * Set the base document styles here.
+ *
+ * 1) This file should only be used for the most top level elements.
+ * 2) See typography and block, layout and component files for more
+ *    specific styles.
+ */
+
+html {
+    background-color: $color-footer-background;
+    box-sizing: border-box;
+
+    /**
+     * Let's ensure that font size a11y features work properly.
+     *
+     * However, from a design perspective It's not recommended to automatically
+     * scale font sizes by changing the root font size with media queries.
+     */
+    font-size: 0.625rem;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    @include font-size(base);
+
+    background-color: $color-body;
+    color: $color-text-dark;
+    font-family: $font-family-default;
+    font-weight: $font-weight-default;
+    line-height: $line-height-base;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    // Disable scrolling when mobile menu is open
+    &.open-mobile-menu {
+        @include for-mobile-navigation {
+            overflow: hidden;
+        }
+    }
+}
+
+html,
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    line-height: inherit;
+}
+
+img {
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+}
+
+// Admin bar visibility fixes
+
+@media (min-width: 783px) {
+    .admin-bar .l-header {
+        &.headroom--top,
+        &.headroom--pinned {
+            padding-top: 32px;
+        }
+    }
+
+    .admin-bar .l-site-content {
+        margin-top: 32px;
+    }
+}
+
+@media (max-width: 782px) {
+    #wpadminbar {
+        display: none;
+    }
+}
+
+// Page numbers
+
+.page-numbers {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+
+    li {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

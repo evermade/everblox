@@ -1,0 +1,119 @@
+/**
+ * Font size placeholders are defined here. They should be used with the
+ * font-size mixin. The mixin fills in the prefix so you should use only
+ * the "base name" of the size.
+ *
+ * Please keep the font-size declarations in rem units, using the rem()
+ * mixin for easy conversion. This is to ensure that a11y
+ * features related to font sizes work properly.The fonts don't scale
+ * automatically on smaller screens, which is intended.
+ *
+ * Example scss
+ *   @include font-size(h3);
+ *   ...
+ *   @include font-size(extra-small);
+ */
+
+%font-size-h1 {
+    font-size: rem(34px);
+
+    @include for-tablet-portrait-up {
+        font-size: rem(42px);
+    }
+
+    @include for-tablet-landscape-up {
+        font-size: rem(36px);
+    }
+
+    @include for-desktop-up {
+        font-size: rem(48px);
+    }
+
+    @include for-large-desktop-up {
+        font-size: rem(48px);
+    }
+}
+
+%font-size-h2 {
+    font-size: rem(30px);
+
+    @include for-tablet-portrait-up {
+        font-size: rem(36px);
+    }
+
+    @include for-tablet-landscape-up {
+        font-size: rem(32px);
+    }
+
+    @include for-desktop-up {
+        font-size: rem(36px);
+    }
+
+    @include for-large-desktop-up {
+        font-size: rem(36px);
+    }
+}
+
+%font-size-h3 {
+    font-size: rem(22px);
+
+    @include for-tablet-portrait-up {
+        font-size: rem(26px);
+    }
+
+    @include for-tablet-landscape-up {
+        font-size: rem(22px);
+    }
+
+    @include for-desktop-up {
+        font-size: rem(24px);
+    }
+
+    @include for-large-desktop-up {
+        font-size: rem(24px);
+    }
+}
+
+%font-size-h4 {
+    font-size: rem(20px);
+}
+
+%font-size-h5 {
+    font-size: rem(18px);
+}
+
+%font-size-h6 {
+    font-size: rem(16px);
+}
+
+%font-size-extra-large {
+    font-size: rem(24px);
+}
+
+%font-size-large {
+    font-size: rem(20px);
+}
+
+%font-size-base {
+    font-size: rem(16px);
+}
+
+%font-size-small {
+    font-size: rem(14px);
+}
+
+%font-size-extra-small {
+    font-size: rem(12px);
+}
+
+/**
+ * Helper mixin for font sizes.
+ *
+ * Example scss
+ *   @include font-size(large);
+ *   @include font-size(h5);
+ */
+
+@mixin font-size($size) {
+    @extend %font-size-#{$size};
+}

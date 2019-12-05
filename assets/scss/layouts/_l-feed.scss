@@ -1,0 +1,74 @@
+.l-feed {
+    @include vertical-spacing;
+
+    &__container {
+        @include container;
+    }
+
+    &__app {
+        position: relative;
+        z-index: 1;
+    }
+
+    &__filters {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__results {
+        position: relative;
+        display: flex;
+        flex-flow: row wrap;
+        z-index: 1;
+        margin-left: -5px;
+        margin-right: -5px;
+
+        @include for-tablet-landscape-up {
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+
+        @include for-desktop-up {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+        &--loading {
+            height: 200px;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &__item {
+        position: relative;
+        padding: 5px;
+        width: 100%;
+        display: flex;
+
+        @include for-tablet-portrait-up {
+            width: 33.3333%;
+        }
+
+        @include for-tablet-landscape-up {
+            padding: 10px;
+        }
+
+        @include for-desktop-up {
+            padding: 15px;
+        }
+    }
+
+    &__more {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    &__not-found {
+        padding: 75px 15px;
+        text-align: center;
+        width: 100%;
+    }
+}

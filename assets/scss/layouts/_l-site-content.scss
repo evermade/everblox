@@ -1,0 +1,10 @@
+.l-site-content {
+
+    @include for-mobile-navigation {
+        padding-top: $height-navigation-mobile;
+    }
+
+    @include for-desktop-navigation {
+        padding-top: $height-navigation-desktop;
+    }
+}

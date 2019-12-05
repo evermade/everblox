@@ -1,0 +1,26 @@
+.c-header-logo {
+    position: relative;
+
+    &__image {
+        display: block;
+        height: $height-navigation-mobile * 0.9;
+        width: 125px;
+        font-size: 0;
+        color: transparent;
+        background-image: url('../../img/logo-dark.png');
+        background-size: contain;
+        background-position: 0 50%;
+        background-repeat: no-repeat;
+
+        @include for-desktop-up {
+            width: 165px;
+        }
+
+        .open-mobile-menu & {
+
+            @include for-mobile-navigation {
+                background-image: url('../../img/logo-light.png');
+            }
+        }
+    }
+}

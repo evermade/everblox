@@ -1,0 +1,22 @@
+.c-category-list {
+    position: relative;
+    font-size: 0;
+
+    &__item {
+        @include font-size(extra-small);
+
+        display: inline-block;
+        text-transform: uppercase;
+    }
+
+    &__separator {
+        @include font-size(extra-small);
+
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    &__link {
+        color: inherit;
+    }
+}

@@ -1,0 +1,6 @@
+.c-overlay {
+    @include cover;
+
+    background-color: $color-overlay;
+    opacity: $opacity-overlay;
+}

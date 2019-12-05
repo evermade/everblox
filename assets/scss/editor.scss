@@ -1,0 +1,61 @@
+@import "variables";
+@import "functions";
+
+@import "mixins";
+
+@import "base";
+@import "typography";
+@import "wysiwyg";
+
+$color-info: #00529B;
+$background-info: #BDE5F8;
+
+$color-success: #4F8A10;
+$background-success: #DFF2BF;
+
+$color-warning: #9F6000;
+$background-warning: #FEEFB3;
+
+$color-error: #D8000C;
+$background-error: #FFD2D2;
+
+html {
+    padding: 15px 20px;
+    background-color: white;
+}
+
+/**
+ * Helper classes for styling warnings
+ */
+
+%dont-allow-text-style {
+    @include pseudo;
+
+    content: "We don't recommend using this style here.";
+    font-size: 11px;
+    font-family: $font-family-default;
+    font-weight: $font-weight-strong;
+    line-height: 1;
+    background-color: $color-error;
+    color: #fff;
+    padding: 8px 10px;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+}
+
+/**
+ * Only way I've found to target specific editors is to hardcode
+ * their id's here. Use with caution.
+ */
+
+// [data-id="acf-editor-55"] {
+//     h1 {
+//         position: relative;
+//         background-color: $background-error;
+
+//         &::before {
+//             @extend %dont-allow-text-style;
+//         }
+//     }
+// }

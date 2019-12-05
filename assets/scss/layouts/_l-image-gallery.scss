@@ -1,0 +1,104 @@
+.l-image-gallery {
+    $flickity-page-dots-offset: 80px;
+
+    @include vertical-spacing;
+
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    &__container {
+        @include container;
+    }
+
+    &__items {
+        position: relative;
+
+        // Override Flickity default settings found in vendor/_flickity.scss.
+        .flickity-viewport {
+            transition: height 0.5s $ease-out-expo;
+        }
+
+        .flickity-prev-next-button {
+            transition: $transition-default;
+            top: auto;
+            bottom: -($flickity-page-dots-offset);
+            z-index: 1;
+
+            svg {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 65%;
+                height: 65%;
+            }
+
+            &.previous {
+                left: -25px;
+
+                @include for-desktop-up {
+                    left: 10px;
+                }
+            }
+
+            &.next {
+                right: -25px;
+
+                @include for-desktop-up {
+                    right: 10px;
+                }
+            }
+
+            &[disabled] {
+                opacity: 0;
+            }
+        }
+    }
+
+    &__item {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        background-color: #000;
+
+        // Prevent other than first slide flickering on screen before Flickity is initialized
+        &:first-child,
+        .flickity-enabled & {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    // Ask your designer how they want to fill the space around scaled images!
+    &__item-background {
+        @include cover;
+
+        background-color: #000;
+        z-index: -1;
+    }
+
+    &__controls {
+        padding-top: 25px;
+        padding-bottom: 15px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        line-height: 1;
+    }
+
+    &__previous,
+    &__next {
+        white-space: nowrap;
+    }
+
+    &__caption {
+
+        @include for-tablet-portrait-up {
+            width: 50%;
+            max-width: 600px;
+        }
+    }
+}

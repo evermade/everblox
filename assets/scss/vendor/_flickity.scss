@@ -1,0 +1,113 @@
+/**
+ * Colors of dots and arrows are defined with text colors in _style.scss.
+ */
+
+@import '~flickity/css/flickity.css';
+
+.flickity-page-dots {
+    .dot {
+        height: 2px;
+        width: 8px;
+        margin-left: 2px;
+        margin-right: 2px;
+        opacity: 0.2;
+        border-radius: 0;
+        transition: $transition-default;
+
+        @include for-tablet-portrait-up {
+            width: 16px;
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+
+        @include for-tablet-landscape-up {
+            width: 20px;
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+
+        &.is-selected {
+            opacity: 1;
+            width: 12px;
+
+            @include for-tablet-portrait-up {
+                width: 24px;
+            }
+
+            @include for-tablet-landscape-up {
+                width: 30px;
+            }
+        }
+
+        &:only-child {
+            display: none;
+        }
+
+        /**
+        * Style color settings. These are related to Style block settings
+        * found in _style.scss. The default settings are used regardless of
+        * style block parent.
+        */
+
+        &,
+        &.is-selected {
+            background-color: $color-link;
+
+            .style--brand-light [data-style-color] & {
+                background-color: $color-link-light;
+            }
+        }
+    }
+}
+
+.flickity-button {
+    background: transparent;
+
+    &:hover {
+        background: transparent;
+    }
+}
+
+.flickity-prev-next-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
+
+    .flickity-button-icon {
+        transition: none;
+        top: 50%;
+        width: 50%;
+        height: 50%;
+        transform: translateY(-50%);
+
+        @include for-phone-only {
+            width: 25%;
+            height: 25%;
+        }
+
+        /**
+        * Style color settings. These are related to Style block settings
+        * found in _style.scss. The default settings are used regardless of
+        * style block parent.
+        */
+        fill: $color-link;
+
+        .style--brand-light [data-style-color] & {
+            fill: $color-link-light;
+        }
+    }
+
+    &.prev {
+        .flickity-button-icon {
+            left: 0;
+            right: auto;
+        }
+    }
+
+    &.next {
+        .flickity-button-icon {
+            left: auto;
+            right: 0;
+        }
+    }
+}

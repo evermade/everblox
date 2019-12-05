@@ -1,0 +1,60 @@
+.l-search-modal {
+    @include cover;
+
+    position: fixed;
+    z-index: 99999;
+    background-color: $color-search-background;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 1s $ease-out-expo;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    @include for-desktop-up {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    @include for-large-desktop-up {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    &__container {
+        @include container;
+
+        position: relative;
+    }
+
+    &__close {
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 0;
+        right: $container-padding-phone;
+        background-image: url(../../img/icon-close.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: 50% 50%;
+        display: block;
+
+        @include for-tablet-portrait-up {
+            width: 32px;
+            height: 32px;
+            right: $container-padding-tablet-portrait;
+        }
+
+        @include for-desktop-up {
+            right: $container-padding-desktop;
+        }
+    }
+
+    &.is-open {
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+    }
+}

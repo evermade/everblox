@@ -1,0 +1,87 @@
+.l-summary-grid {
+    $gutter: 30px;
+
+    position: relative;
+    overflow: hidden;
+
+    &__container {
+        @include container;
+    }
+
+    &__header {
+        max-width: $container-max-width / 2;
+        padding-bottom: 25px;
+
+        @include for-tablet-portrait-up {
+            padding-bottom: 30px;
+        }
+
+        @include for-tablet-landscape-up {
+            padding-bottom: 30px;
+        }
+
+        @include for-desktop-up {
+            padding-bottom: 50px;
+        }
+
+        @include for-large-desktop-up {
+            padding-bottom: 60px;
+        }
+    }
+
+    &__items {
+        display: flex;
+        flex-flow: row wrap;
+        margin-left: -($gutter / 2);
+        margin-right: -($gutter / 2);
+
+        /**
+        * This padding is just for box shadow hover effects on the items.
+        * You can remove it if your item components don't have a box shadow effect.
+        */
+        padding-bottom: 20px;
+    }
+
+    &__item {
+        display: flex;
+        width: 100%;
+        padding: $gutter / 2;
+
+        @include for-tablet-portrait-up {
+            width: 50%;
+        }
+
+        @include for-desktop-up {
+            width: 33.3333%;
+        }
+    }
+
+    // Contact item type
+    &--item-contact {
+
+        .l-summary-grid__items {
+
+            @include for-phone-only {
+                margin-left: -10px;
+                margin-right: -10px;
+            }
+        }
+
+        .l-summary-grid__item {
+            width: 50%;
+
+            @include for-phone-only {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            @include for-tablet-landscape-up {
+                width: 33.3333%;
+            }
+
+            @include for-desktop-up {
+                width: 25%;
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.c-background-video {
+    @include cover;
+
+    pointer-events: none;
+    overflow: hidden;
+    animation: fadeIn 1s 1s $ease-out-sine both;
+
+    iframe {
+        @include center;
+        width: 100%;
+        height: 100%;
+    }
+
+    /**
+     * For Youtube video backgrounds, make player overflow it's container to hide the UI.
+     */
+    &--youtube {
+        $playerOverflow: 80px;
+
+        left: 50%;
+        transform: translateX(-50%);
+
+        iframe {
+            position: absolute;
+            top: -1*$playerOverflow;
+            height: calc(#{$playerOverflow} * 2 + 100%);
+            width: 100%;
+            left: 0;
+            transform: none;
+        }
+    }
+}

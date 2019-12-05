@@ -1,0 +1,54 @@
+.c-menu-toggle {
+    $icon-width: 20px;
+
+    cursor: pointer;
+    position: relative;
+    height: $height-navigation-mobile;
+    width: $icon-width + (2 * $padding-horizontal-navigation-icon);
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+
+    html:not(.user-is-tabbing) &:focus {
+        outline: none;
+    }
+
+    &__icon {
+        @include center;
+
+        span {
+            position: relative;
+            width: $icon-width;
+            height: 2px;
+            margin-bottom: 5px;
+            background-color: $color-heading-dark;
+            transition: all 0.2s $ease-in-out-quart;
+            display: block;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .open-mobile-menu & {
+
+            span {
+                opacity: 0;
+                background-color: $color-heading-light;
+
+                &:first-child {
+                    transform: rotate(45deg);
+                    opacity: 1;
+                    top: 7px;
+                }
+
+                &:last-child {
+                    transform: rotate(-45deg);
+                    -webkit-transform: rotate(-45deg);
+                    opacity: 1;
+                    top: -7px;
+                }
+            }
+        }
+    }
+}

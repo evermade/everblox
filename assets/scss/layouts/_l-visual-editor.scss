@@ -1,0 +1,244 @@
+$visual-editor-item-gutter: 50px;
+$visual-editor-three-column-item-gutter: $visual-editor-item-gutter * 0.6666;
+$visual-editor-four-column-item-gutter: $visual-editor-item-gutter * 0.5;
+$visual-editor-one-column-max-width: 750px;
+
+.l-visual-editor {
+    @include vertical-spacing;
+
+    overflow: hidden;
+
+    &__container {
+        @include container;
+    }
+
+    &__items {
+        display: flex;
+        flex-flow: column nowrap;
+
+        @include for-tablet-portrait-up {
+            flex-flow: row wrap;
+        }
+
+        &[data-columns="2"] {
+            @include for-tablet-portrait-up {
+                margin-left: -($visual-editor-item-gutter / 2);
+                margin-right: -($visual-editor-item-gutter / 2);
+            }
+        }
+
+        &[data-columns="3"] {
+            @include for-tablet-portrait-up {
+                margin-left: -($visual-editor-three-column-item-gutter / 2);
+                margin-right: -($visual-editor-three-column-item-gutter / 2);
+            }
+        }
+
+        &[data-columns="4"] {
+            @include for-tablet-portrait-up {
+                margin-left: -($visual-editor-four-column-item-gutter / 2);
+                margin-right: -($visual-editor-four-column-item-gutter / 2);
+            }
+        }
+    }
+
+    &__item {
+        width: 100%;
+        padding-bottom: $visual-editor-item-gutter;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+
+        [data-columns="1"] & {
+            max-width: $visual-editor-one-column-max-width;
+        }
+
+        [data-columns="2"] & {
+            @include for-tablet-portrait-up {
+                width: 50%;
+                padding-bottom: 0;
+                padding-left: $visual-editor-item-gutter / 2;
+                padding-right: $visual-editor-item-gutter / 2;
+            }
+        }
+
+        [data-columns="3"] & {
+            @include for-tablet-portrait-up {
+                width: 33.3333%;
+                padding-bottom: 0;
+                padding-left: $visual-editor-three-column-item-gutter / 2;
+                padding-right: $visual-editor-three-column-item-gutter / 2;
+            }
+        }
+
+        [data-columns="4"] & {
+            @include for-tablet-portrait-up {
+                width: 50%;
+                padding-left: $visual-editor-four-column-item-gutter / 2;
+                padding-right: $visual-editor-four-column-item-gutter / 2;
+            }
+
+            @include for-tablet-landscape-up {
+                padding-bottom: 0;
+                width: 25%;
+            }
+        }
+
+        /**
+         * Uncomment this to make box styled columns equal height to other columns.
+         */
+
+        // &--style-box {
+        //     display: flex;
+        // }
+    }
+
+    &--spacing-headline {
+        padding-bottom: 25px;
+
+        @include for-tablet-portrait-up {
+            padding-bottom: 30px;
+        }
+
+        @include for-tablet-landscape-up {
+            padding-bottom: 30px;
+        }
+
+        @include for-desktop-up {
+            padding-bottom: 50px;
+        }
+
+        @include for-large-desktop-up {
+            padding-bottom: 60px;
+        }
+    }
+}
+
+/**
+ * Alternative layout options.
+ *
+ * If you don't want these enabled in your project,
+ * remove all the ACF options under the "Layout" tab.
+ */
+
+.l-visual-editor__item {
+
+    // One column layouts
+
+    [data-columns="1"][data-one-layout="full-width"] & {
+        max-width: none;
+    }
+
+    [data-columns="1"][data-one-layout="narrow-center"] & {
+        max-width: $visual-editor-one-column-max-width;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    [data-columns="1"][data-one-layout="narrow-right"] & {
+        max-width: $visual-editor-one-column-max-width;
+        margin-left: auto;
+    }
+
+    // Two column layouts
+
+    [data-columns="2"][data-two-layout="66-33"] & {
+        @include for-tablet-landscape-up {
+            &:nth-child(1) {
+                width: 66.6666%;
+            }
+
+            &:nth-child(2) {
+                width: 33.3333%;
+            }
+        }
+    }
+
+    [data-columns="2"][data-two-layout="33-66"] & {
+        @include for-tablet-landscape-up {
+            &:nth-child(1) {
+                width: 33.3333%;
+            }
+
+            &:nth-child(2) {
+                width: 66.6666%;
+            }
+        }
+    }
+
+    // Three column layouts
+
+    [data-columns="3"][data-three-layout="50-25-25"] & {
+        @include for-tablet-portrait-up {
+            &:nth-child(1) {
+                width: 100%;
+                padding-bottom: $visual-editor-item-gutter;
+            }
+
+            &:nth-child(2) {
+                width: 50%;
+            }
+
+            &:nth-child(3) {
+                width: 50%;
+            }
+        }
+
+        @include for-tablet-landscape-up {
+            &:nth-child(1) {
+                width: 50%;
+                padding-bottom: 0;
+            }
+
+            &:nth-child(2) {
+                width: 25%;
+            }
+
+            &:nth-child(3) {
+                width: 25%;
+            }
+        }
+    }
+
+    [data-columns="3"][data-three-layout="25-25-50"] & {
+        @include for-tablet-portrait-up {
+            &:nth-child(1) {
+                width: 50%;
+            }
+
+            &:nth-child(2) {
+                width: 50%;
+            }
+
+            &:nth-child(3) {
+                width: 100%;
+                padding-top: $visual-editor-item-gutter;
+            }
+        }
+
+        @include for-tablet-landscape-up {
+            &:nth-child(1) {
+                width: 25%;
+            }
+
+            &:nth-child(2) {
+                width: 25%;
+            }
+
+            &:nth-child(3) {
+                width: 50%;
+                padding-top: 0;
+            }
+        }
+    }
+
+    // Four column layouts
+
+    [data-columns="4"][data-four-layout="25-25-25-25"] & {
+        @include for-tablet-portrait-up {
+            padding-bottom: 0;
+            width: 25%;
+        }
+    }
+}

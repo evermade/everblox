@@ -1,0 +1,41 @@
+.c-spinner,
+.c-spinner:after {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+}
+
+.c-spinner {
+    margin: 15px auto;
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    transform: translateZ(0);
+    animation: spinner 0.75s infinite linear;
+
+    &,
+    &--color-dark {
+        border-top: 2px solid rgba(0, 0, 0, 0.2);
+        border-right: 2px solid rgba(0, 0, 0, 0.2);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        border-left: 2px solid #000;
+    }
+
+    &--color-light,
+    .style--brand-light [data-style-color] & {
+        border-top: 2px solid rgba(255, 255, 255, 0.2);
+        border-right: 2px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        border-left: 2px solid #ffffff;
+    }
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

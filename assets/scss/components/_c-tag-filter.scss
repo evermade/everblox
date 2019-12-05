@@ -1,0 +1,37 @@
+.c-tag-filter {
+    @include font-size(extra-small);
+
+    a {
+        position: relative;
+        display: inline-block;
+        font-weight: $font-weight-strong;
+        padding: 3px 25px 3px 7px;
+        border: solid 1px rgba(#000, 0.1);
+        border-radius: 5px;
+        color: $color-link;
+        background-color: #fff;
+        transition: all 0.25s $ease-out-expo;
+
+        &::after {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background-image: url(../../img/icon-remove.svg);
+            background-size: contain;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 50%;
+            right: 6px;
+            transform: translateY(-50%);
+        }
+
+        .no-touch &:hover {
+            background-color: #fff;
+        }
+    }
+
+    & + & {
+        margin-left: 5px;
+    }
+}

@@ -1,0 +1,66 @@
+/**
+ * Adds specific color schemes and other style settings to
+ * child elements.
+ *
+ * 1) The style class sets the container of a specific styleset.
+ * 2) Add data-style-color to all elements within a style that
+ *    should be targeted by the text color rules.
+ * 3) You can also define colors for specific components in their
+ *    files by referencing a specific parent style.
+ */
+
+.style {
+    overflow: hidden;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+
+    &,
+    &--white-dark {
+        background-color: $color-body;
+
+        [data-style-color] {
+            @include text-color-dark;
+        }
+    }
+
+    &--lightGray-dark {
+        background-color: #f3f3f3;
+    }
+
+    &--brand-light {
+        background-color: $color-brand;
+
+        [data-style-color] {
+            @include text-color-light;
+        }
+    }
+
+    /**
+     * It's recommended that you place new text color
+     * values directly here instead of creating new
+     * placeholders or mixins.
+     *
+     * The naming convention used for the classes is
+     * by default "style--background-text".
+     */
+
+    &--salmon-mixed {
+        background-color: salmon;
+
+        [data-style-color] {
+            color: #000;
+
+            h1, h2, h3, h4, h5, h6 {
+                color: #fff;
+            }
+        }
+    }
+
+    // Background image settings
+
+    &--image-pattern {
+        background-size: auto;
+        background-repeat: repeat;
+    }
+}

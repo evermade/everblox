@@ -1,0 +1,201 @@
+.l-image-and-text {
+    $side-gutter-tablet-landscape: 50px;
+    $side-gutter-desktop: 100px;
+    $stacked-gutter: 50px;
+    $text-max-width: 550px;
+    $image-side-overflow: 5%;
+    $cover-side-min-height: 65vh;
+
+    @include vertical-spacing;
+
+    position: relative;
+
+    &__container {
+        @include container;
+
+        display: flex;
+        flex-flow: column nowrap;
+
+        @include for-tablet-landscape-up {
+            flex-flow: row nowrap;
+        }
+    }
+
+    &__image-wrapper {
+        display: flex;
+        justify-content: center;
+
+        @include for-tablet-landscape-up {
+            align-items: center;
+            justify-content: flex-end;
+            width: 50%;
+        }
+
+        @media screen and (min-width: $container-max-width) {
+            width: 50% + $image-side-overflow;
+            margin-left: -$image-side-overflow;
+        }
+    }
+
+    &__image {
+        align-self: center;
+        flex: 0 0 auto;
+    }
+
+    &__text-wrapper {
+        margin-top: $stacked-gutter;
+
+        @include for-tablet-landscape-up {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            width: 50%;
+        }
+    }
+
+    &__text {
+        max-width: $text-max-width;
+
+        @include for-tablet-landscape-up {
+            padding-top: calc(10% + 20px);
+            padding-bottom: calc(10% + 20px);
+            padding-left: $side-gutter-tablet-landscape;
+        }
+
+        @include for-desktop-up {
+            padding-top: calc(10% + 40px);
+            padding-bottom: calc(10% + 40px);
+            padding-left: $side-gutter-desktop;
+        }
+    }
+
+    /**
+     * Options that change the stacking layout.
+     */
+    &--text-stack-bottom {
+
+        @include for-tablet-landscape-down {
+            padding-top: 25px;
+        }
+    }
+
+    &--text-stack-top {
+
+        .l-image-and-text__container {
+
+            @include for-tablet-landscape-down {
+                flex-flow: column-reverse nowrap;
+            }
+        }
+
+        .l-image-and-text__text-wrapper {
+
+            @include for-tablet-landscape-down {
+                margin-top: 0;
+                margin-bottom: $stacked-gutter;
+            }
+        }
+    }
+
+    /**
+     * Options that change the side-by-side layout.
+     */
+    &--text-side-left {
+
+        .l-image-and-text__container {
+
+            @include for-tablet-landscape-up {
+                flex-flow: row-reverse nowrap;
+            }
+        }
+
+        .l-image-and-text__text {
+
+            @include for-tablet-landscape-up {
+                padding-left: 0;
+                padding-right: $side-gutter-tablet-landscape;
+            }
+
+            @include for-desktop-up {
+                padding-right: $side-gutter-desktop;
+            }
+        }
+
+        .l-image-and-text__image-wrapper {
+
+            @include for-tablet-landscape-up {
+                justify-content: flex-start;
+            }
+
+            @media screen and (min-width: $container-max-width) {
+                margin-left: 0;
+                margin-right: -($image-side-overflow);
+            }
+        }
+    }
+
+    /**
+     * Options that change the image behavior.
+     */
+    &--image-cover {
+        padding-top: 0;
+
+        @include for-tablet-landscape-up {
+            padding-bottom: 0;
+        }
+
+        .l-image-and-text__image-wrapper {
+            background-position: 50% 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding-top: 70%;
+
+            // Strech the image to edges of the browser on stacked layout.
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+
+            @include for-tablet-landscape-up {
+                margin-left: 0;
+                margin-right: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 50%;
+                padding-top: 0;
+            }
+        }
+
+        .l-image-and-text__container {
+
+            @include for-tablet-landscape-up {
+                justify-content: flex-end;
+                min-height: $cover-side-min-height;
+            }
+        }
+
+        // Compatibility with other options.
+        &.l-image-and-text--text-side-left {
+
+            .l-image-and-text__image-wrapper {
+
+                @include for-tablet-landscape-up {
+                    left: 50%;
+                }
+            }
+        }
+
+        // In cover image behavior, when stacked, this layout behaves as collapsing.
+        & + .collapse {
+            margin-top: -60px;
+
+            @include for-tablet-portrait-up {
+                margin-top: -75px;
+            }
+
+            @include for-tablet-landscape-up {
+                margin-top: 0;
+            }
+        }
+    }
+}

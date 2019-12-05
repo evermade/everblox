@@ -1,0 +1,104 @@
+.l-footer {
+    position: relative;
+    z-index: z-index(footer);
+    background-color: $color-footer-background;
+
+    &__container {
+        @include container;
+    }
+
+    &__columns {
+        padding-top: 30px;
+        padding-bottom: 30px;
+
+        @include for-tablet-portrait-up {
+            display: flex;
+            flex-flow: row nowrap;
+            padding-top: 50px;
+            padding-bottom: 40px;
+        }
+
+        @include for-tablet-landscape-up {
+            padding-top: 50px;
+            padding-bottom: 40px;
+        }
+
+        @include for-desktop-up {
+            padding-top: 75px;
+            padding-bottom: 60px;
+        }
+
+        @include for-large-desktop-up {
+            padding-top: 100px;
+            padding-bottom: 80px;
+        }
+    }
+
+    &__logo {
+        width: 125px;
+        margin-bottom: 30px;
+
+        @include for-desktop-up {
+            width: 165px;
+        }
+    }
+
+    &__menu {
+        margin-bottom: 20px;
+        max-width: 650px;
+        width: 100%;
+
+        @include for-tablet-portrait-up {
+            margin-bottom: 0;
+            margin-left: 30px;
+            flex-grow: 1;
+        }
+
+        @include for-desktop-up {
+            margin-left: 50px;
+        }
+
+        @include for-large-desktop-up {
+            margin-left: 75px;
+        }
+    }
+
+    &__social-media {
+        margin-left: -10px;
+
+        @include for-tablet-portrait-up {
+            margin-left: auto;
+            justify-self: flex-end;
+        }
+    }
+
+    &__bottom {
+        @include text-color-dark;
+        @include font-size(small);
+
+        position: relative;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        width: 100%;
+        border-top: solid 1px rgba(#000, 0.15);
+
+        @include for-tablet-portrait-up {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+    }
+
+    &__bottom-primary,
+    &__bottom-secondary {
+        margin-bottom: 20px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        @include for-tablet-portrait-up {
+            margin-bottom: 0;
+        }
+    }
+}

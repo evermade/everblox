@@ -1,0 +1,196 @@
+/**
+ * The wysiwyg class is used to ensure that the contents of an element stay
+ * well-formatted when the client has control over the content. Typically used
+ * when the client has the ability to add HTML through the WordPress visual editor.
+ *
+ * The reason we are using calc's when defining the margins is to set a minimum
+ * margin that doesn't not currently exist in CSS.
+ *
+ * Example - no matter the font size, margin never goes under 30px
+ *   margin-top: calc(30px + 1em);
+ */
+
+.wysiwyg {
+
+    // Set all edge margins to 0
+    h1, h2, h3, h4, h5, h6, p, blockquote {
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // Headings
+
+    h1, .h1 {
+        margin-top: calc(30px + 1em);
+        margin-bottom: calc(15px + 0.5em);
+    }
+
+    h2, .h2 {
+        margin-top: calc(30px + 1em);
+        margin-bottom: calc(15px + 0.5em);
+    }
+
+    h3, .h3 {
+        margin-top: calc(30px + 1em);
+        margin-bottom: calc(15px + 0.5em);
+    }
+
+    h4, .h4 {
+        margin-top: calc(30px + 1em);
+        margin-bottom: calc(15px + 0.5em);
+    }
+
+    h5, .h5 {
+        margin-top: calc(30px + 1em);
+        margin-bottom: calc(15px + 0.5em);
+    }
+
+    h6, .h6 {
+        margin-top: calc(30px + 1em);
+        margin-bottom: calc(15px + 0.5em);
+    }
+
+    // Text elements
+
+    p {
+        margin-top: calc(20px + 0.5em);
+        margin-bottom: calc(20px + 0.5em);
+    }
+    
+    ul:not(.inline-list) {
+        list-style-type: disc;
+    }
+    
+    ol:not(.inline-list) {
+        list-style-type: decimal;
+    }
+
+    ul:not(.inline-list),
+    ol:not(.inline-list) {
+        margin-top: calc(20px + 0.5em);
+        margin-bottom: calc(20px + 0.5em);
+        padding-left: 15px;
+        margin-left: 30px;
+
+        &:first-child {
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 5px;
+
+            ul, ol {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    blockquote {
+        margin-top: calc(30px + 1em);
+        margin-bottom: calc(30px + 1em);
+    }
+
+    strong {
+        font-weight: $font-weight-strong;
+    }
+
+    .c-button, .c-text-button {
+        margin-top: 20px;
+    }
+
+    // Links
+
+    a:not(.c-button):not(.c-text-button) {
+        font-weight: $font-weight-strong;
+        text-decoration: underline;
+    }
+
+    // Images
+
+    p.wp-caption-text {
+        @include font-size(small);
+
+        opacity: 0.6;
+        margin: 0;
+        text-align: center;
+    }
+
+    .wp-caption {
+        max-width: 100%;
+        margin-bottom: calc(30px + 1em);
+
+        img {
+            margin-bottom: 10px;
+        }
+    }
+
+    .alignnone {
+        display: block;
+    }
+
+    .aligncenter {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .alignleft,
+    .alignright {
+        max-width: 50%;
+        margin-bottom: 20px;
+
+        @include for-tablet-portrait-up {
+            margin-bottom: 40px;
+        }
+    }
+
+    .alignleft {
+        float: left;
+        margin-right: 20px;
+
+        @include for-tablet-portrait-up {
+            margin-right: 40px;
+        }
+    }
+
+    .alignright {
+        float: right;
+        margin-left: 20px;
+
+        @include for-tablet-portrait-up {
+            margin-left: 40px;
+        }
+    }
+
+    // Other
+
+    hr {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    table {
+        width: 100%;
+        border-spacing: 0;
+        border-right: 1px solid rgba(#000, 0.15);
+        border-bottom: 1px solid rgba(#000, 0.15);
+
+        td,
+        th {
+            padding: 15px;
+            text-align: left;
+            border-top: 1px solid rgba(#000, 0.15);
+            border-left: 1px solid rgba(#000, 0.15);
+        }
+
+        th {
+            background: rgba(#000, 0.05);
+        }
+    }
+}

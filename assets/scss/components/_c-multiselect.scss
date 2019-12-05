@@ -1,0 +1,204 @@
+.c-multiselect {
+    $padding-horizontal: 15px;
+
+    position: relative;
+    max-width: 100%;
+
+    @include for-tablet-portrait-up {
+        width: 260px;
+    }
+
+    html:not(.user-is-tabbing) &:focus {
+        outline: none;
+    }
+
+    &__title {
+        @include font-size(small);
+
+        text-transform: uppercase;
+        opacity: 0.5;
+        margin-bottom: 5px;
+    }
+
+    &__field {
+        @include font-size(h5);
+
+        position: relative;
+        width: 100%;
+        cursor: pointer;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 5px 20px 7px 0;
+        transition: all 0.25s $ease-out-expo;
+
+        // Arrow icon
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 3px;
+            transform: translateY(-50%);
+            margin-top: 3px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            transition: all 0.25s $ease-out-expo;
+        }
+    }
+
+    &__options {
+        list-style-type: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 100%;
+        background-color: #fff;
+        box-shadow: $box-shadow-raised;
+        border-radius: 5px;
+        border: solid 1px #f4f4f4;
+        padding: 0;
+        transition: all 0.25s $ease-out-expo;
+        overflow: hidden;
+        visibility: hidden;
+        height: 0;
+        opacity: 0;
+        z-index: 3;
+    }
+
+    &__option {
+        position: relative;
+        white-space: nowrap;
+        cursor: pointer;
+        padding: 3px $padding-horizontal 3px ($padding-horizontal + 20px);
+        color: $color-link;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: $padding-horizontal;
+            width: 14px;
+            height: 14px;
+            border: solid 1px #ccc;
+            border-radius: 3px;
+            transform: translateY(-50%);
+            transition: all 0.15s $ease-out-expo;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: $padding-horizontal + 2px;
+            width: 10px;
+            height: 10px;
+            background-image: url(../../img/icon-check-white.svg);
+            background-size: contain;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            transform: translateY(-50%) scale(0);
+            transition: all 0.25s $ease-out-expo;
+        }
+
+        &:hover {
+            color: $color-link-hover;
+        }
+
+        html:not(.user-is-tabbing) &:focus {
+            outline: none;
+        }
+
+        &--selected {
+            &::before {
+                background-color: $color-link-hover;
+                border-color: $color-link-hover;
+            }
+
+            &::after {
+                transform: translateY(-50%) scale(1);
+            }
+        }
+    }
+
+    &__clear {
+        @include font-size(extra-small);
+
+        background-color: #fbfbfb;
+        padding: 10px $padding-horizontal 0;
+        margin-top: 10px;
+        color: $color-danger;
+        border-top: solid 1px #f4f4f4;
+        cursor: pointer;
+        transition: all 0.25s $ease-out-expo;
+    }
+
+    &--open,
+    &:hover {
+        .c-multiselect__options {
+            padding: 10px 0 0 0;
+            visibility: visible;
+            height: auto;
+            opacity: 1;
+        }
+
+        .c-multiselect__clear {
+            padding-bottom: 10px;
+        }
+
+        .c-multiselect__field {
+            box-shadow: none;
+
+            &::after {
+                transform: translateY(-50%) rotate(180deg);
+            }
+        }
+    }
+
+    /**
+     * Style color settings. These are related to Style block settings
+     * found in _style.scss. The default settings are used regardless of
+     * style block parent.
+     */
+
+    // Default, dark for light backgrounds
+    &,
+    &--color-dark {
+
+        .c-multiselect__field {
+            color: $color-link;
+
+            // Arrow icon
+            &::after {
+                border-top: 5px solid $color-link;
+            }
+        }
+
+        &:not(:hover):not(.c-multiselect--open) {
+            .c-multiselect__field {
+                box-shadow: 0 -1px 0 0 $color-link inset;
+            }
+        }
+    }
+
+    // Light for dark backgrounds
+    &--color-light,
+    .style--brand-light [data-style-color] & {
+
+        .c-multiselect__field {
+            color: $color-link-light;
+
+            // Arrow icon
+            &::after {
+                border-top: 5px solid $color-link-light;
+            }
+        }
+
+        &:not(:hover):not(.c-multiselect--open) {
+            .c-multiselect__field {
+                box-shadow: 0 -1px 0 0 $color-link-light inset;
+            }
+        }
+    }
+}

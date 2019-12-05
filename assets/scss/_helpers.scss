@@ -1,0 +1,78 @@
+/**
+ * Define helper classes used to override default component
+ * behavior.
+ *
+ * 1) Think carefully should something be a stand-alone component
+ *    rather than a helper.
+ * 2) If CSS inheritance is an issue, use !important flag on the
+ *    properties. Don't try to force a parent class on the
+ *    definitions.
+ */
+
+.container {
+    @include container;
+}
+
+// A 16:9 wrapper class for any video embed.
+.embed-wrapper {
+    background: #000;
+    padding-top: 56.25%;
+    position: relative;
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// Hide a11y features
+.hide-a11y {
+    position: fixed;
+    top: -9999px;
+}
+
+// Helper class for collapsing the padding of two elements
+.collapse + .collapse {
+  padding-top: 0;
+}
+
+// For link elements that wrap several elements
+.wrapper-link {
+    display: block;
+}
+
+// Helper for creating inline lists
+.inline-list {
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+    padding: 0;
+}
+
+// Responsive container for iframe embeds
+.responsive-container {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+
+    iframe {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+/**
+ * Visibility helpers for elements. Note that these override
+ * any existing display settings.
+ */
+
+.hidden {
+    display: none !important;
+}

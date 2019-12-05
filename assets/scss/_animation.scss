@@ -1,0 +1,168 @@
+/**
+ * These are animations that are based on animate.css, but changed
+ * to suit our preferences.
+ */
+
+$animation-delay-step: 0.15;
+
+// Hide all animated elements before animations kick in
+@include for-animation {
+    *[data-animate] {
+        opacity: 0;
+
+        &.animated {
+            opacity: 1;
+        }
+    }
+}
+
+/**
+ * Animation Speeds
+ *
+ * <div class="animated duration--slow fadeInUp"></div>
+ */
+
+.animated {
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-timing-function: $ease-out-expo;
+}
+
+.duration {
+    &--fast {
+        animation-duration: 0.6s;
+    }
+
+    &--slow {
+        animation-duration: 1.25s;
+    }
+
+    &--veryslow {
+        animation-duration: 3s;
+    }
+}
+
+/**
+ * Animation Delay
+ *
+ * <div class="animated delay--3 fadeInUp"></div>
+ */
+
+@for $i from 1 through 20 {
+    .delay--#{$i} {
+        animation-delay: unquote(($animation-delay-step * $i) + 's');
+    }
+}
+
+/**
+ * Animation Sequence for Child Elements
+ *
+ * <div class="animated--sequence">
+ *     <div class="animated fadeInUp"></div>
+ * </div>
+ */
+
+@for $i from 1 through 20 {
+    .animated--sequence *:nth-child(#{$i}) {
+        animation-delay: unquote(($animation-delay-step * $i) + 's'); //0.5, 1, 1.5 etc
+    }
+}
+
+/**
+ * Animation types
+ */
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -30px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.fadeInDown {
+    animation-name: fadeInDown;
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translate3d(-30px, 0, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.fadeInLeft {
+    animation-name: fadeInLeft;
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translate3d(30px, 0, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.fadeInRight {
+    animation-name: fadeInRight;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 60px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.fadeInUp {
+    animation-name: fadeInUp;
+}
+
+@keyframes zoomIn {
+    0%, 100% {
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    0% {
+        opacity: 0;
+        transform: scale3d(.9, .9, .9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+
+
+.zoomIn {
+    animation-name: zoomIn;
+}

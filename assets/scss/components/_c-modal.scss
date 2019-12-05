@@ -1,0 +1,147 @@
+.c-modal {
+    position: relative;
+    z-index: z-index(modal);
+
+    &__overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba($color-overlay, $opacity-overlay);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        [aria-hidden="false"] & {
+            animation: modalFadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+        }
+
+        [aria-hidden="true"] & {
+            animation: modalFadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+        }
+
+        &--opaque {
+            background-color: rgba($color-overlay, 0.95);
+        }
+    }
+
+    &__container {
+        position: relative;
+        background-color: #fff;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 30px;
+        padding-right: 30px;
+        max-width: 500px;
+        max-height: 100vh;
+        border-radius: 4px;
+        overflow-y: auto;
+        box-sizing: border-box;
+
+        @include for-desktop-up {
+            padding-top: 45px;
+            padding-bottom: 45px;
+            padding-right: 60px;
+            padding-left: 60px;
+            max-width: 800px;
+        }
+
+        [aria-hidden="false"] & {
+            animation: modalSlideIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+        }
+
+        [aria-hidden="true"] & {
+            animation: modalSlideOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+        }
+
+        &--video {
+            background-color: transparent;
+            max-width: none;
+            border-radius: 0;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            max-width: calc(100vh * 16/9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-right: 30px;
+            padding-left: 30px;
+
+            @include for-desktop-up {
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+
+            iframe {
+                @include cover;
+
+                display: block;
+                width: 100%;
+                height: 100%;
+                pointer-events: auto;
+            }
+        }
+    }
+
+    &__responsive-wrapper {
+        position: relative;
+        background-color: #000;
+        padding-top: 100% * 9/16;
+        width: 100%;
+    }
+
+    &__close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: transparent;
+        border: 0;
+        z-index: 2;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+
+        &::before {
+            @include center;
+
+            content: "\2715";
+            z-index: 1;
+        }
+
+        &--outside {
+            color: #fff;
+            top: 0;
+            right: 0;
+
+            @include for-desktop-up {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    }
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@keyframes modalFadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}
+
+@keyframes modalSlideIn {
+  from { transform: translateY(15%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes modalSlideOut {
+    from { transform: translateY(0); }
+    to { transform: translateY(10%); }
+}

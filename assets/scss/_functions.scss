@@ -1,0 +1,9 @@
+// Helper function for getting values from the spacing type map
+@function spacing-type($type) {
+  @return map-get($spacing-types, $type);
+}
+
+// Helper function for gettin values from the z-index map
+@function z-index($key, $offset: 0) {
+  @return map-get($z-index, $key) + $offset;
+}

@@ -1,0 +1,111 @@
+.c-feed-search {
+    position: relative;
+    max-width: 100%;
+
+    @include for-tablet-portrait-up {
+        width: 260px;
+    }
+
+    &:last-child, &:only-child {
+        margin-right: 0;
+    }
+
+    &__title {
+        @include font-size(small);
+
+        text-transform: uppercase;
+        opacity: 0.5;
+        margin-bottom: 5px;
+    }
+
+    &__field {
+        @include font-size(h5);
+
+        position: relative;
+        width: 100%;
+        font-weight: $font-weight-strong;
+        transition: all 0.25s $ease-out-expo;
+
+        input {
+            width: 100%;
+            border: none;
+            background-color: transparent;
+            padding: 5px 20px 7px 0;
+
+            html:not(.user-is-tabbing) &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    &__icon {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        right: 3px;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        background-size: contain;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+    }
+
+    /**
+     * Style color settings. These are related to Style block settings
+     * found in _style.scss. The default settings are used regardless of
+     * style block parent.
+     */
+
+    // Default, dark for light backgrounds
+    &,
+    &--color-dark {
+
+        .c-feed-search__field {
+            color: $color-link;
+            box-shadow: 0 -1px 0 0 $color-link inset;
+
+            input {
+                color: $color-link;
+
+                &::placeholder {
+                    color: $color-link;
+                }
+            }
+        }
+
+        .c-feed-search__icon {
+            background-image: url(../../img/icon-search-dark.svg);
+
+            &--clear {
+                background-image: url(../../img/icon-search-clear.svg);
+            }
+        }
+    }
+
+    // Light for dark backgrounds
+    &--color-light,
+    .style--brand-light [data-style-color] & {
+
+        .c-feed-search__field {
+            color: $color-link-light;
+            box-shadow: 0 -1px 0 0 $color-link-light inset;
+
+            input {
+                color: $color-link-light;
+
+                &::placeholder {
+                    color: $color-link-light;
+                }
+            }
+        }
+
+        .c-feed-search__icon {
+            background-image: url(../../img/icon-search-light.svg);
+
+            &--clear {
+                background-image: url(../../img/icon-search-clear.svg);
+            }
+        }
+    }
+}

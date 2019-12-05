@@ -1,0 +1,123 @@
+.c-story-card {
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: $box-shadow-flat;
+    transition: all 1s $ease-out-expo;
+
+    &__link {
+        position: relative;
+        height: 100%;
+        z-index: 2;
+    }
+
+    &__image-wrapper {
+        position: relative;
+        padding-top: 56.25%;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    &__image {
+        @include cover;
+
+        background-position: 50% 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        transition: all 2s $ease-out-expo;
+
+        .wrapper-link:hover & {
+            transform: scale(1.05);
+        }
+    }
+
+    &__content {
+        @include text-color-dark;
+
+        position: relative;
+        padding-top: 30px;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-bottom: 60px;
+        z-index: 1;
+    }
+
+    &__title {
+        margin-bottom: 20px;
+        transition: $transition-fast;
+
+        .wrapper-link:hover & {
+            color: $color-link;
+        }
+    }
+
+    &__categories {
+        color: $color-text-light;
+        text-shadow: 0 2px 3px rgba(#000, 0.1);
+        position: absolute;
+        top: 20px;
+        left: 25px;
+        z-index: 3;
+
+        a {
+            .has-hover &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    &__tags {
+        color: $color-text-secondary-dark;
+        position: absolute;
+        bottom: 20px;
+        left: 25px;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        overflow: hidden;
+        z-index: 3;
+
+        a {
+            .has-hover &:hover {
+                color: $color-link-hover;
+            }
+        }
+    }
+
+    &__more {
+        margin-top: 10px;
+    }
+
+    .has-hover &:hover {
+        box-shadow: $box-shadow-raised;
+    }
+
+    .style--white-dark & {
+        border: solid 1px rgba(#000, 0.05);
+    }
+
+    &--no-image {
+
+        .c-story-card__content {
+            padding-top: 80px;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .c-story-card__categories {
+            color: $color-text-dark;
+            text-shadow: none;
+            left: 30px;
+        }
+
+        .c-story-card__tags {
+            left: 30px;
+        }
+
+        .c-story-card__title {
+            @include font-size(h2);
+        }
+    }
+}

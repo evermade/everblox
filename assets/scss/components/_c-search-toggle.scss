@@ -1,0 +1,33 @@
+.c-search-toggle {
+    $icon-width: 20px;
+    $icon-height: 20px;
+
+    cursor: pointer;
+    position: relative;
+    height: $height-navigation-mobile;
+    width: $icon-width + (2 * $padding-horizontal-navigation-icon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: $icon-width;
+        height: $icon-height;
+
+        path {
+            fill: $color-heading-dark;
+
+            .open-mobile-menu & {
+                fill: $color-heading-light;
+            }
+        }
+    }
+
+    .has-hover &:hover {
+        svg {
+            path {
+                fill: $color-link;
+            }
+        }
+    }
+}

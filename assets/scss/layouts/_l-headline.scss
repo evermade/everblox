@@ -1,0 +1,196 @@
+.l-headline {
+    $side-gutter-tablet-landscape: 50px;
+    $side-gutter-desktop: 100px;
+    $text-max-width: 650px;
+    $layout-vertical-padding: calc(10% + 50px);
+    $stacked-gutter: 50px;
+
+    position: relative;
+    overflow: hidden;
+
+    /**
+     * This layout doesn't support the Style block by default.
+     */
+    background-color: #000;
+    color: #fff;
+
+    &__background {
+        @include cover;
+
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    &__wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    &__container {
+        @include container;
+
+        position: relative;
+        z-index: 2;
+    }
+
+    &__text {
+        max-width: $text-max-width;
+        padding-top: $layout-vertical-padding;
+        padding-bottom: $layout-vertical-padding;
+    }
+
+    &__image-wrapper {
+        position: relative;
+        z-index: 2;
+        padding-left: $container-padding-phone;
+        padding-right: $container-padding-phone;
+
+        @include for-tablet-portrait-up {
+            padding-left: $container-padding-tablet-portrait;
+            padding-right: $container-padding-tablet-portrait;
+        }
+
+        @include for-tablet-landscape-up {
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 0;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            right: $container-padding-tablet-portrait;
+            bottom: 0;
+        }
+
+        @include for-desktop-up {
+            right: $container-padding-desktop;
+        }
+    }
+
+    &__image {
+        @include for-tablet-landscape-up {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            max-width: 100%;
+            max-height: 90%;
+        }
+    }
+
+    /**
+     * Option for having an illustration image.
+     */
+    &--has-image {
+
+        .l-headline__text {
+
+            @include for-tablet-landscape-up {
+                width: 50%;
+                padding-right: $side-gutter-tablet-landscape;
+            }
+
+            @include for-desktop-up {
+                padding-right: $side-gutter-desktop;
+            }
+        }
+    }
+
+    /**
+     * Options for layout spacing.
+     */
+    &--spacing-viewport {
+        display: flex;
+
+        .l-headline__wrapper {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            min-height: calc(100vh - #{$height-navigation-mobile});
+
+            @include for-desktop-navigation {
+                min-height: calc(100vh - #{$height-navigation-desktop});
+            }
+        }
+
+        // Compatibility with other options.
+        &.l-headline--image-align-bottom {
+            .l-headline__wrapper {
+
+                @include for-phone-only {
+                    justify-content: flex-end;
+                }
+            }
+        }
+    }
+
+    /**
+     * Options for image alignment.
+     */
+    &--image-align-top {
+
+        .l-headline__wrapper {
+            @include for-tablet-landscape-down {
+                display: flex;
+                flex-flow: column-reverse nowrap;
+                justify-content: flex-end;
+            }
+        }
+
+        .l-headline__text {
+
+            @include for-phone-only {
+                padding-top: 0;
+            }
+        }
+
+        .l-headline__image {
+
+            @include for-phone-only {
+                margin-bottom: $stacked-gutter;
+            }
+
+            @include for-tablet-landscape-up {
+                top: 0;
+                transform: none;
+            }
+        }
+    }
+
+    &--image-align-middle {
+
+        .l-headline__image-wrapper {
+
+            @include for-phone-only {
+                padding-bottom: $layout-vertical-padding;
+            }
+        }
+
+        .l-headline__text {
+
+            @include for-phone-only {
+                padding-bottom: 0;
+                margin-bottom: $stacked-gutter;
+            }
+        }
+    }
+
+    &--image-align-bottom {
+
+        .l-headline__image {
+
+            @include for-tablet-landscape-up {
+                top: auto;
+                bottom: 0;
+                transform: none;
+            }
+        }
+
+        .l-headline__text {
+
+            @include for-phone-only {
+                padding-bottom: 0;
+                margin-bottom: $stacked-gutter;
+            }
+        }
+    }
+}

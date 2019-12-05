@@ -1,0 +1,76 @@
+/**
+ * The navigation bar layout handles displaying and positioning the
+ * various navigation elements. Instead of showing and hiding
+ * individual components, do it in this file.
+ */
+
+.l-navigation-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $height-navigation-mobile;
+
+    @include for-desktop-navigation {
+        height: $height-navigation-desktop;
+    }
+
+    &__tools {
+        font-size: 0;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: flex-end;
+        margin-right: -($container-padding-phone - $padding-horizontal-navigation-icon);
+
+        @include for-tablet-portrait-up {
+            margin-right: -($container-padding-tablet-portrait - $padding-horizontal-navigation-icon);
+        }
+
+        /**
+        * If you don't need any tools apart from the mobile menu toggle
+        * set display to none on the tools container on desktop breakpoint.
+        *
+        * @include for-desktop-navigation {
+        *     display: none;
+        * }
+        */
+
+        > div {
+
+            @include for-desktop-navigation {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            &:last-child {
+                @include for-desktop-navigation {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    &__menu {
+        margin-left: auto;
+
+        @include for-mobile-navigation {
+            display: none;
+        }
+    }
+
+    &__social {
+        @include font-size(large);
+
+        @include for-mobile-navigation {
+            display: none;
+        }
+    }
+
+    &__menu-toggle {
+
+        @include for-desktop-navigation {
+            display: none;
+        }
+    }
+}

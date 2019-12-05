@@ -1,0 +1,30 @@
+.c-story-single {
+    max-width: 75ch; // forces a comfortable 75 character reading width
+    margin-left: auto;
+    margin-right: auto;
+
+    &__header {
+        margin-bottom: 30px;
+    }
+
+    &__title {
+        margin-bottom: 10px;
+    }
+
+    &__meta {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+    }
+
+    &__date {
+        opacity: 0.25;
+        margin-right: 30px;
+    }
+
+    &__content {
+        p:first-child {
+            @include font-size(large);
+        }
+    }
+}

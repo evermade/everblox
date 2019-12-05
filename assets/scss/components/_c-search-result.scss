@@ -1,0 +1,50 @@
+.c-search-result {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding-top: $padding-search-result;
+    padding-bottom: $padding-search-result + 10px;
+    padding-right: $padding-search-result;
+    padding-left: $padding-search-result;
+    border-radius: $border-radius-default;
+    background-color: transparent;
+    box-shadow: $box-shadow-flat;
+    transition: $transition-default;
+
+    &__link {
+        display: block;
+        height: 100%;
+    }
+
+    &__label {
+        @include font-size(extra-small);
+
+        color: $color-text-dark;
+        opacity: 0.5;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+    &__title {
+        color: $color-heading-dark;
+        margin-bottom: 10px;
+    }
+
+    &__excerpt {
+        color: $color-text-dark;
+        margin-bottom: 10px;
+    }
+
+    &__more {
+        color: $color-link;
+    }
+
+    .has-hover &:hover {
+        box-shadow: $box-shadow-raised;
+        background-color: #fff;
+
+        .c-search-result__more {
+            color: $color-link-hover;
+        }
+    }
+}

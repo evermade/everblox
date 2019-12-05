@@ -1,0 +1,101 @@
+/**
+ * These are the core media breakpoints. You are encouraged to extend this
+ * according to your project's needs.
+ *
+ * Remember that you are not locked into just using these breakpoints in your
+ * other scss files, feel free to write direct media queries where needed!
+ */
+
+@mixin for-phone-only {
+    @media (max-width: 599px) {
+        @content;
+    }
+}
+
+@mixin for-tablet-portrait-up {
+    @media (min-width: 600px) {
+        @content;
+    }
+}
+
+@mixin for-tablet-landscape-down {
+    @media (max-width: 899px) {
+        @content;
+    }
+}
+
+@mixin for-tablet-landscape-up {
+    @media (min-width: 900px) {
+        @content;
+    }
+}
+
+@mixin for-desktop-down {
+    @media (max-width: 1199px) {
+        @content;
+    }
+}
+
+@mixin for-desktop-up {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin for-large-desktop-down {
+    @media (max-width: 1799px) {
+        @content;
+    }
+}
+
+@mixin for-large-desktop-up {
+    @media (min-width: 1800px) {
+        @content;
+    }
+}
+
+// Contextual breakpoints
+@mixin for-animation {
+    @media (min-width: 900px) {
+        @content;
+    }
+}
+
+@mixin for-mobile-navigation {
+    @media (max-width: 899px) {
+        @content;
+    }
+}
+
+@mixin for-desktop-navigation {
+    @media (min-width: 900px) {
+        @content;
+    }
+}
+
+// Please note that prefers-color-scheme isn't supported by all browsers yet.
+// https://caniuse.com/#search=prefers-color-scheme
+@mixin for-dark-mode {
+    @media (prefers-color-scheme: dark) {
+        @content;
+    }
+}
+
+@mixin for-light-mode {
+   @media (prefers-color-scheme: light) {
+       @content;
+   }
+}
+
+// Device specific breakpoints
+@mixin for-iphone-8 {
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+        @content;
+    }
+}
+
+@mixin for-iphone-x {
+    @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+        @content;
+    }
+}

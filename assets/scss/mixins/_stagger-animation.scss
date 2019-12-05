@@ -1,0 +1,14 @@
+/**
+ * Adds an animation delay to all child elements.
+ *
+ * Example scss
+ *   @include stagger-animation(0.10, 20);
+ */
+
+@mixin stagger-animation($animation-delay-step: 0.20, $amount: 10) {
+    @for $i from 1 through $amount {
+        & *:nth-child(#{$i}) {
+            animation-delay: ($animation-delay-step * $i) + s;
+        }
+    }
+}

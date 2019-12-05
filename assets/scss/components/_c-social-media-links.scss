@@ -1,0 +1,94 @@
+.c-social-media-links {
+    $icon-size: 16px;
+    $icon-padding: 8px;
+
+    position: relative;
+    font-size: 0;
+
+    &__title {
+        display: inline-block;
+        padding-right: 0.3em;
+    }
+
+    &__list {
+        display: inline;
+        list-style-type: none;
+        padding: 0;
+
+        li {
+            display: inline-block;
+
+            a {
+                display: inline-block;
+                padding-top: $icon-padding;
+                padding-right: $icon-padding;
+                padding-bottom: $icon-padding;
+                padding-left: $icon-padding;
+                width: $icon-size + $icon-padding * 2;
+                height: $icon-size + $icon-padding * 2;
+
+                svg {
+                    width: $icon-size;
+                    height: $icon-size;
+
+                    path, circle {
+                        fill: $color-link;
+                    }
+                }
+
+                &:hover {
+                    svg {
+                        path, circle {
+                            fill: $color-link-hover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Style color settings. These are related to Style block settings
+     * found in _style.scss. The default settings are used regardless of
+     * style block parent.
+     */
+
+    // Default & dark variant, for light background
+
+    .c-social-media-links__list li a {
+        svg {
+            path, circle {
+                fill: $color-link;
+            }
+        }
+
+        &:hover {
+            svg {
+                path, circle {
+                    fill: $color-link-hover;
+                }
+            }
+        }
+    }
+
+    // Light variant, for dark background
+
+    .style--brand-light [data-style-color] & {
+
+        .c-social-media-links__list li a {
+            svg {
+                path, circle {
+                    fill: $color-link-light;
+                }
+            }
+
+            &:hover {
+                svg {
+                    path, circle {
+                        fill: $color-link-light-hover;
+                    }
+                }
+            }
+        }
+    }
+}

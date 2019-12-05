@@ -1,0 +1,34 @@
+.c-search-field {
+    @include text-color-dark;
+
+    position: relative;
+
+    &__label {
+        @include font-size(h6);
+
+        display: block;
+    }
+
+    &__input {
+        @include font-size(h1);
+
+        background-color: transparent;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        margin-top: 15px;
+        border: none;
+        width: 100%;
+        max-width: 100%;
+        border-bottom: solid 1px rgba($color-heading-dark, 0.3);
+
+        html:not(.user-is-tabbing) &:focus {
+            outline: none;
+        }
+    }
+
+    &__title {
+        @include font-size(h2);
+
+        margin-bottom: 10px;
+    }
+}

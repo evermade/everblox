@@ -1,0 +1,58 @@
+.c-contact-card-small {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    &__image {
+        width: 115px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+
+        @include for-tablet-portrait-up {
+            width: 150px;
+        }
+    }
+
+    &__title {
+        margin-bottom: 10px;
+
+        @include for-tablet-portrait-up {
+            margin-bottom: 15px;
+        }
+    }
+
+    &__content {
+        padding-left: 15px;
+        min-width: 0;
+
+        @include for-tablet-portrait-up {
+            padding-left: 25px;
+        }
+    }
+
+    &__social {
+        margin-top: 10px;
+    }
+
+    &__job-title {
+        line-height: 1.2;
+    }
+
+    &__email {
+        @include font-size(small);
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        a {
+            color: inherit;
+        }
+    }
+
+    &__phone {
+        @include font-size(small);
+    }
+}

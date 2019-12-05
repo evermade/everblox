@@ -1,0 +1,126 @@
+/**
+ * The vertical spacing mixins help you create paddings for the standard
+ * breakpoints. Remember that you can always just define these directly to
+ * the layouts.
+ */
+
+@mixin vertical-spacing(
+    $phone: 60px,
+    $tablet-portrait: 75px,
+    $tablet-landscape: 75px,
+    $desktop: 125px,
+    $large-desktop: 150px
+) {
+    padding-top: $phone;
+    padding-bottom: $phone;
+
+    @include for-tablet-portrait-up {
+        padding-top: $tablet-portrait;
+        padding-bottom: $tablet-portrait;
+    }
+
+    @include for-tablet-landscape-up {
+        padding-top: $tablet-landscape;
+        padding-bottom: $tablet-landscape;
+    }
+
+    @include for-desktop-up {
+        padding-top: $desktop;
+        padding-bottom: $desktop;
+    }
+
+    @include for-large-desktop-up {
+        padding-top: $large-desktop;
+        padding-bottom: $large-desktop;
+    }
+}
+
+@mixin vertical-spacing-top(
+    $phone: 60px,
+    $tablet-portrait: 75px,
+    $tablet-landscape: 75px,
+    $desktop: 125px,
+    $large-desktop: 150px
+) {
+    padding-top: $phone;
+
+    @include for-tablet-portrait-up {
+        padding-top: $tablet-portrait;
+    }
+
+    @include for-tablet-landscape-up {
+        padding-top: $tablet-landscape;
+    }
+
+    @include for-desktop-up {
+        padding-top: $desktop;
+    }
+
+    @include for-large-desktop-up {
+        padding-top: $large-desktop;
+    }
+}
+
+@mixin vertical-spacing-bottom(
+    $phone: 60px,
+    $tablet-portrait: 75px,
+    $tablet-landscape: 75px,
+    $desktop: 125px,
+    $large-desktop: 150px
+) {
+    padding-bottom: $phone;
+
+    @include for-tablet-portrait-up {
+        padding-bottom: $tablet-portrait;
+    }
+
+    @include for-tablet-landscape-up {
+        padding-bottom: $tablet-landscape;
+    }
+
+    @include for-desktop-up {
+        padding-bottom: $desktop;
+    }
+
+    @include for-large-desktop-up {
+        padding-bottom: $large-desktop;
+    }
+}
+
+/**
+ * The offset mixin can be used to bring an element closer to the previous
+ * element.
+ *
+ * Example scss, brings two consequent elements together
+ *  @include vertical-spacing;
+ *
+ *  & + & {
+ *      @include vertical-spacing-offset;
+ *  }
+ */
+
+@mixin vertical-spacing-offset(
+    $phone: 60px,
+    $tablet-portrait: 75px,
+    $tablet-landscape: 75px,
+    $desktop: 125px,
+    $large-desktop: 150px
+) {
+    margin-top: -$phone;
+
+    @include for-tablet-portrait-up {
+        margin-top: -$tablet-portrait;
+    }
+
+    @include for-tablet-landscape-up {
+        margin-top: -$tablet-landscape;
+    }
+
+    @include for-desktop-up {
+        margin-top: -$desktop;
+    }
+
+    @include for-large-desktop-up {
+        margin-top: -$large-desktop;
+    }
+}

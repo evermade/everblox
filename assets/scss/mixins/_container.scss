@@ -1,0 +1,18 @@
+@mixin container() {
+    margin-left: auto;
+    margin-right: auto;
+    width: $container-width;
+    max-width: $container-max-width;
+    padding-left: $container-padding-phone;
+    padding-right: $container-padding-phone;
+
+    @include for-tablet-portrait-up {
+        padding-left: $container-padding-tablet-portrait;
+        padding-right: $container-padding-tablet-portrait;
+    }
+
+    @include for-desktop-up {
+        padding-left: $container-padding-desktop;
+        padding-right: $container-padding-desktop;
+    }
+}

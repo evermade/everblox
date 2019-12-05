@@ -1,0 +1,88 @@
+.c-accordion-item {
+    $content-max-width: 750px;
+
+    position: relative;
+
+    &__title {
+        position: relative;
+        cursor: pointer;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        padding-left: 25px;
+
+        @include for-tablet-portrait-up {
+            padding-left: 40px;
+        }
+
+        @include for-large-desktop-up {
+            padding-top: 35px;
+            padding-bottom: 35px;
+        }
+
+        html:not(.user-is-tabbing) &:focus {
+            outline: none;
+        }
+
+        // Plus/minus icons
+        &::before,
+        &::after {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            content: '';
+            width: 12px;
+            height: 2px;
+            margin-top: -1px;
+            border-radius: 3px;
+            background-color: $color-heading-dark;
+            transition: $transition-fast;
+
+            @include for-tablet-portrait-up {
+                width: 16px;
+            }
+
+            .style--brand-light [data-style-color] & {
+                background-color: $color-heading-light;
+            }
+        }
+
+        &::after {
+            transform: rotate(90deg) scaleX(1);
+        }
+    }
+
+    &__content {
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        padding-top: 0;
+        padding-bottom: 0;
+        opacity: 0;
+        transition: $transition-default;
+        max-width: $content-max-width;
+        padding-left: 25px;
+
+        @include for-tablet-portrait-up {
+            padding-left: 40px;
+        }
+    }
+
+    &.is-open {
+        .c-accordion-item__title {
+            &::after {
+                transform: rotate(90deg) scaleX(0);
+            }
+        }
+
+        .c-accordion-item__content {
+            visibility: visible;
+            height: auto;
+            opacity: 1;
+            padding-bottom: 25px;
+
+            @include for-large-desktop-up {
+                padding-bottom: 35px;
+            }
+        }
+    }
+}

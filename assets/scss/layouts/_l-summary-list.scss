@@ -1,0 +1,49 @@
+.l-summary-list {
+    $gutter: 30px;
+
+    position: relative;
+
+    &__container {
+        @include container;
+
+        @include for-tablet-landscape-up {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+    }
+
+    &__header {
+        padding-bottom: 25px;
+        max-width: 500px;
+
+        @include for-tablet-portrait-up {
+            padding-bottom: 30px;
+        }
+
+        @include for-tablet-landscape-up {
+            padding-bottom: 0;
+            width: 50%;
+            max-width: none;
+            padding-right: 50px;
+        }
+
+        @include for-desktop-up {
+            padding-right: 100px;
+        }
+    }
+
+    &__items {
+
+        @include for-tablet-landscape-up {
+            width: 50%;
+        }
+    }
+
+    &__item {
+        padding-bottom: $gutter;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+}

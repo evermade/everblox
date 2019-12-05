@@ -1,0 +1,118 @@
+/**
+ * Define the global variables used across the project here.
+ *
+ * 1) Always create variables with a meaningful context.
+ * 2) Avoid defining component specific variables on the global level.
+ * 3) See other files in the base folder for more global styles.
+ */
+
+/**
+ * Define project colors here. Try not to directly reference these outside
+ * this file. If you need inspiration for variable names, use something like:
+ * http://chir.ag/projects/name-that-color
+ *
+ * You can also skip this entirely and just define contextual variables.
+ */
+$color-black-near:              #111;
+$color-blue-bright:             #6d9ef7;
+$color-beige-light:             #f2e1d3;
+$color-gray:                    #666;
+$color-gray-light:              #eee;
+$color-gray-dark:               #383838;
+$color-white-near:              #f6f6f6;
+
+/**
+ * Bind colors to meaningful contextual variables.
+ * Try to use these across the project as much as you can.
+ */
+$color-brand:                   $color-blue-bright;
+$color-brand-secondary:         $color-beige-light;
+$color-text-dark:               $color-gray-dark;
+$color-text-light:              #f3f3f3;
+$color-text-secondary-dark:     lighten($color-text-dark, 50%);
+$color-text-secondary-light:    darken($color-text-light, 50%);
+$color-heading-dark:            $color-black-near;
+$color-heading-light:           #fff;
+$color-body:                    #fff;
+$color-link:                    $color-brand;
+$color-link-hover:              lighten($color-link, 10%);
+$color-link-active:             darken($color-link, 5%);
+$color-link-light:              $color-brand-secondary;
+$color-link-light-hover:        lighten($color-link-light, 10%);
+$color-link-light-active:       darken($color-brand-secondary, 5%);
+$color-overlay:                 #000;
+$color-navigation:              $color-black-near;
+$color-navigation-hover:        $color-link;
+$color-footer-background:       $color-gray-light;
+$color-search-background:       $color-gray-light;
+$color-shadow:                  #000;
+$color-info:                    #5e94f7;
+$color-info-background:         #ecf3fd;
+$color-success:                 #4F8A10;
+$color-success-background:      #DFF2BF;
+$color-warning:                 #f69f53;
+$color-warning-background:      #fff3e3;
+$color-danger:                  #D8000C;
+$color-danger-background:       #FFD2D2;
+
+// Font families
+$font-family-default:       "Work Sans", Helvetica, Arial, sans-serif;
+$font-family-heading:       "Karla", Helvetica, Arial, sans-serif;
+
+// Font weights
+$font-weight-default:       400;
+$font-weight-strong:        700;
+$font-weight-heading:       $font-weight-strong;
+
+// Line heights
+$line-height-base:          1.628571429;
+$line-height-heading:       1.2;
+
+// Z-indexes, recommended to use with the z-index helper function.
+$z-index: (
+    modal:          200,
+    header:         100,
+    content:        90,
+    footer:         60
+);
+
+// Border radiuses
+$border-radius-default:     5px;
+$border-radius-small:       2px;
+$border-radius-large:       15px;
+
+// Box shadows
+$box-shadow-flat:           0 0 0 0 rgba($color-shadow, 0);
+$box-shadow-raised:         0 25px 20px -10px rgba($color-shadow, 0.075);
+$box-shadow-raised-small:   0 10px 8px -5px rgba($color-shadow, 0.075);
+
+// Animation easing methods
+$ease-out-expo:             cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$ease-out-sine:             cubic-bezier(0.390, 0.575, 0.565, 1.000);
+$ease-in-out-quart:         cubic-bezier(0.770, 0.000, 0.175, 1.000);
+
+// Transitions
+$transition-default:        all 0.5s $ease-out-expo;
+$transition-fast:           all 0.25s $ease-out-expo;
+$transition-slow:           all 0.75s $ease-out-sine;
+$transition-slide:          all 1s $ease-in-out-quart;
+
+// Opacity
+$opacity-overlay:           0.75;
+
+// Navigation bar sizes which are also used to offset blocks.
+$height-navigation-mobile:  55px;
+$height-navigation-desktop: 85px;
+
+// Header components
+$padding-horizontal-navigation-icon:    15px;
+
+// Search
+$padding-search-result:                 25px;
+
+// Grid container
+$container-max-width:                   1440px;
+$container-width:                       100%;
+$container-padding-phone:               25px;
+$container-padding-tablet-portrait:     40px;
+$container-padding-desktop:             70px;

@@ -1,0 +1,7 @@
+.l-styleguide {
+    @include vertical-spacing;
+
+    &__container {
+        @include container;
+    }
+}
