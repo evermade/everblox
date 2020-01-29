@@ -58,7 +58,7 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "sass-loader": "^7.1.0",
-    "shave": "^2.5.2",
+    "shave": "^2.5.3",
     "stickybits": "^3.6.5",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "url-loader": "^1.1.2",
